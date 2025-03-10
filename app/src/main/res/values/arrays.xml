@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tournament_types">
+        <item>Mata-Mata</item>
+        <item>Pontos Corridos</item>
+    </string-array>
+</resources>

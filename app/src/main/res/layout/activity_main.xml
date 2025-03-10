@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:gravity="center">
+
+    <EditText
+        android:id="@+id/etPlayers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Jogadores (ex: João, Maria...)"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/etTeamCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Quantidade de times"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/etPlayersPerTeam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Jogadores por time"
+        android:inputType="number"/>
+
+    <Spinner
+        android:id="@+id/spTournamentType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/tournament_types"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/btnGenerateTeams"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gerar Times"
+        android:layout_marginTop="16dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/tvGeneratedTeams"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"/>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnStartChampionship"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Iniciar Campeonato"
+        android:layout_marginTop="16dp"
+        android:enabled="false"/>
+</LinearLayout>
