@@ -21,6 +21,15 @@ class MainActivity : AppCompatActivity() {
 
     private var generatedTeams: List<Team> = emptyList()
 
+    // 🔥 Lista de nomes engraçados para os times
+    private val teamNames = listOf(
+        "Unidos do Gole", "Só Canelas", "Tropa do Gás", "Sem Freio FC", "Os Cansados",
+        "Raça Ruim", "Peladeiros FC", "Só Resenha", "Baba da Esquina", "Chuteira Furada",
+        "Vai ou Racha", "Só Toquinho", "Real Madruga", "Ajax da Favela", "Tropa do Pó de Arroz",
+        "Os Boleiros", "Cai Dentro FC", "Meia Boca Juniors", "Caneludos FC", "Bar Sem Lona",
+        "Borussia da Quebrada", "Avassaladores", "Bico Certo", "Sem Filtro FC"
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -41,7 +50,6 @@ class MainActivity : AppCompatActivity() {
         val playersInput = etPlayers.text.toString().trim()
         val teamCount = etTeamCount.text.toString().toIntOrNull() ?: 0
         val playersPerTeam = etPlayersPerTeam.text.toString().toIntOrNull() ?: 0
-        val tournamentType = spTournamentType.selectedItem.toString()
 
         if (playersInput.isEmpty() || teamCount == 0 || playersPerTeam == 0) {
             showToast("Preencha todos os campos!")
@@ -56,15 +64,12 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        if (tournamentType == "Mata-Mata" && !teamCount.isPowerOfTwo()) {
-            showToast("Para mata-mata, o número de times deve ser 2, 4, 8...")
-            return
-        }
+        val availableNames = teamNames.shuffled().take(teamCount) // Pegamos nomes aleatórios
 
         generatedTeams = List(teamCount) { index ->
             val start = index * playersPerTeam
             val end = start + playersPerTeam
-            Team("Time ${index + 1}", ArrayList(players.subList(start, end)))
+            Team(availableNames[index], ArrayList(players.subList(start, end)))
         }
 
         tvGeneratedTeams.text = generatedTeams.joinToString("\n\n") { team ->
