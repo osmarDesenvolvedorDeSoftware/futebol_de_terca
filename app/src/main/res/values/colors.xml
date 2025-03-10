@@ -1,5 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="primary">#0D47A1</color> <!-- Azul Escuro -->
+    <color name="primary_light">#1976D2</color> <!-- Azul Médio -->
+    <color name="primary_dark">#0B3D91</color> <!-- Azul Mais Escuro -->
+    <color name="accent">#D32F2F</color> <!-- Vermelho -->
+    <color name="background">#F1F1F1</color> <!-- Cinza Claro -->
+    <color name="white">#FFFFFF</color>
 </resources>

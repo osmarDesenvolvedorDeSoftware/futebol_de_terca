@@ -5,7 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:background="@color/background"
     android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Futebol de Várzea"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary"/>
 
     <EditText
         android:id="@+id/etPlayers"
@@ -39,8 +48,11 @@
         android:id="@+id/btnGenerateTeams"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Gerar Times"
-        android:layout_marginTop="16dp"/>
+        android:text="Gerar Times ⚽"
+        android:background="@drawable/button_background"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:padding="12dp"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -59,7 +71,10 @@
         android:id="@+id/btnStartChampionship"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Iniciar Campeonato"
-        android:layout_marginTop="16dp"
+        android:text="Iniciar Campeonato 🏆"
+        android:background="@drawable/button_background"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:padding="12dp"
         android:enabled="false"/>
 </LinearLayout>
