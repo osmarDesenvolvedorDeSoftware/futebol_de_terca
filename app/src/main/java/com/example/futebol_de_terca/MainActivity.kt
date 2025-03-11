@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
 
     private var generatedTeams: List<Team> = emptyList()
 
-    // 🔥 Lista de nomes engraçados para os times
     private val teamNames = listOf(
         "Unidos do Gole", "Só Canelas", "Tropa do Gás", "Sem Freio FC", "Os Cansados",
         "Raça Ruim", "Peladeiros FC", "Só Resenha", "Baba da Esquina", "Chuteira Furada",
@@ -43,13 +42,12 @@ class MainActivity : AppCompatActivity() {
         btnGenerateTeams.setOnClickListener { generateTeams() }
         btnStartChampionship.setOnClickListener { startTournament() }
 
-        // Configurar o Spinner com o layout personalizado
         val adapter = ArrayAdapter.createFromResource(
             this,
             R.array.tournament_types,
-            R.layout.spinner_item // Usa o layout personalizado para item selecionado
+            R.layout.spinner_item
         )
-        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item) // Usa o layout do dropdown
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
         spTournamentType.adapter = adapter
     }
 
@@ -87,14 +85,17 @@ class MainActivity : AppCompatActivity() {
         showToast("Times gerados!")
 
         val mediaPlayer = MediaPlayer.create(this, R.raw.torcida)
-        mediaPlayer.setOnCompletionListener { mp ->
-            mp.release() // Libera a memória após a execução do áudio
-        }
         mediaPlayer.start()
-
     }
 
     private fun startTournament() {
+        if (generatedTeams.isEmpty()) {
+            showToast("Erro: Nenhum time gerado!")
+            return
+        }
+
+        println("Times enviados para o campeonato: ${generatedTeams.joinToString { it.name }}")
+
         val intent = when (spTournamentType.selectedItem.toString()) {
             "Mata-Mata" -> Intent(this, KnockoutActivity::class.java)
             "Pontos Corridos" -> Intent(this, LeagueActivity::class.java)
@@ -103,13 +104,15 @@ class MainActivity : AppCompatActivity() {
                 return
             }
         }
+
         intent.putExtra("teams", ArrayList(generatedTeams))
+        intent.putExtra("tournamentType", spTournamentType.selectedItem.toString())
+
         startActivity(intent)
     }
+
 
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
-
-    private fun Int.isPowerOfTwo(): Boolean = this > 0 && (this and (this - 1)) == 0
 }
