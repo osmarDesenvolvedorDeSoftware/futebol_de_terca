@@ -6,21 +6,21 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <!-- RecyclerView para exibir os jogos da rodada atual -->
+  
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMatches"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <!-- Botão para avançar para a próxima rodada -->
+   
     <Button
         android:id="@+id/btnAdvance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Avançar para próxima rodada" />
 
-    <!-- TextView para exibir o campeão, quando definido -->
+   
     <TextView
         android:id="@+id/txtChampion"
         android:layout_width="match_parent"
