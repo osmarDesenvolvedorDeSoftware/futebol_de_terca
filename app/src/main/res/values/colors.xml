@@ -1,9 +1,9 @@
 <resources>
-    <color name="primary">#0D47A1</color> <!-- Azul Escuro -->
-    <color name="primary_light">#1976D2</color> <!-- Azul Médio -->
-    <color name="primary_dark">#0B3D91</color> <!-- Azul Mais Escuro -->
-    <color name="accent">#D32F2F</color> <!-- Vermelho -->
-    <color name="background">#F1F1F1</color> <!-- Cinza Claro -->
+    <color name="primary">#0D47A1</color>
+    <color name="primary_light">#1976D2</color>
+    <color name="primary_dark">#0B3D91</color>
+    <color name="accent">#D32F2F</color>
+    <color name="background">#F1F1F1</color>
     <color name="white">#FFFFFF</color>
     <color name="gold">#FFD700</color>
     <color name="silver">#C0C0C0</color>

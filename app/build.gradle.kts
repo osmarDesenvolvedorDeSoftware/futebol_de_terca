@@ -33,7 +33,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
-        // Adicione se estiver usando Kotlin 1.8+:
+
         freeCompilerArgs = listOf("-Xjvm-default=all-compatibility")
     }
 }
@@ -48,5 +48,5 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.4")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.0")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
-    // Adicione esta linha
+
 }

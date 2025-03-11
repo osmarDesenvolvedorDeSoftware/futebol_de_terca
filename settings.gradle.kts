@@ -1,3 +1,4 @@
+git add .
 pluginManagement {
     repositories {
         google {

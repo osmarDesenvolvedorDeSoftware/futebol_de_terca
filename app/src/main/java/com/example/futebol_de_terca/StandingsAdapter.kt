@@ -41,13 +41,13 @@ class StandingsAdapter(private var standings: List<Standing>) : RecyclerView.Ada
             tvDraws.text = "Empates: ${standing.draws}"
             tvLosses.text = "Derrotas: ${standing.losses}"
 
-            // Destacar o líder com uma cor diferente
+
             val context = itemView.context
             val backgroundColor = when (position) {
-                0 -> ContextCompat.getColor(context, R.color.gold) // 🥇 Primeiro lugar
-                1 -> ContextCompat.getColor(context, R.color.silver) // 🥈 Segundo lugar
-                2 -> ContextCompat.getColor(context, R.color.bronze) // 🥉 Terceiro lugar
-                else -> ContextCompat.getColor(context, R.color.background) // Normal
+                0 -> ContextCompat.getColor(context, R.color.gold)
+                1 -> ContextCompat.getColor(context, R.color.silver)
+                2 -> ContextCompat.getColor(context, R.color.bronze)
+                else -> ContextCompat.getColor(context, R.color.background)
             }
             itemView.setBackgroundColor(backgroundColor)
         }

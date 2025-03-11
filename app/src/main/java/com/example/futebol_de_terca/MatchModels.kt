@@ -11,7 +11,7 @@ data class Match(
         return when {
             score1!! > score2!! -> team1
             score2!! > score1!! -> team2
-            else -> listOf(team1, team2).random() // Sorteio em caso de empate
+            else -> listOf(team1, team2).random()
         }
     }
 }
