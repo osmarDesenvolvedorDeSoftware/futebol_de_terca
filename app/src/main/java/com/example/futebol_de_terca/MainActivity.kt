@@ -1,13 +1,11 @@
 package com.example.futebol_de_terca
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import android.widget.ArrayAdapter
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,6 +42,15 @@ class MainActivity : AppCompatActivity() {
 
         btnGenerateTeams.setOnClickListener { generateTeams() }
         btnStartChampionship.setOnClickListener { startTournament() }
+
+        // Configurar o Spinner com o layout personalizado
+        val adapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.tournament_types,
+            R.layout.spinner_item // Usa o layout personalizado para item selecionado
+        )
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item) // Usa o layout do dropdown
+        spTournamentType.adapter = adapter
     }
 
     private fun generateTeams() {
@@ -64,7 +71,7 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        val availableNames = teamNames.shuffled().take(teamCount) // Pegamos nomes aleatórios
+        val availableNames = teamNames.shuffled().take(teamCount)
 
         generatedTeams = List(teamCount) { index ->
             val start = index * playersPerTeam
@@ -78,6 +85,13 @@ class MainActivity : AppCompatActivity() {
 
         btnStartChampionship.isEnabled = true
         showToast("Times gerados!")
+
+        val mediaPlayer = MediaPlayer.create(this, R.raw.torcida)
+        mediaPlayer.setOnCompletionListener { mp ->
+            mp.release() // Libera a memória após a execução do áudio
+        }
+        mediaPlayer.start()
+
     }
 
     private fun startTournament() {

@@ -1,0 +1,6 @@
+<resources>
+    <style name="SpinnerStyle" parent="Widget.AppCompat.Spinner">
+        <item name="android:popupBackground">@color/primary_dark</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+</resources>

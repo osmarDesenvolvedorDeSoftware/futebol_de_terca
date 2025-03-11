@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@color/background"
+    android:background="@drawable/grama_fundo"
     android:gravity="center">
 
     <TextView
@@ -14,28 +14,34 @@
         android:text="Futebol de Várzea"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@color/primary"/>
+        android:textColor="@android:color/white"/>
 
     <EditText
         android:id="@+id/etPlayers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Jogadores (ex: João, Maria...)"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"/>
 
     <EditText
         android:id="@+id/etTeamCount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Quantidade de times"
-        android:inputType="number"/>
+        android:inputType="number"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"/>
 
     <EditText
         android:id="@+id/etPlayersPerTeam"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Jogadores por time"
-        android:inputType="number"/>
+        android:inputType="number"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"/>
 
     <Spinner
         android:id="@+id/spTournamentType"
@@ -64,7 +70,8 @@
             android:id="@+id/tvGeneratedTeams"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:textColor="@android:color/white"/>
     </ScrollView>
 
     <Button
@@ -77,4 +84,6 @@
         android:textStyle="bold"
         android:padding="12dp"
         android:enabled="false"/>
+
+
 </LinearLayout>

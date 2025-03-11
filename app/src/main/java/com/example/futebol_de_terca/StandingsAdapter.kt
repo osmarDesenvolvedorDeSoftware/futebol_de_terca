@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
 class StandingsAdapter(private var standings: List<Standing>) : RecyclerView.Adapter<StandingsAdapter.StandingViewHolder>() {
@@ -15,7 +16,8 @@ class StandingsAdapter(private var standings: List<Standing>) : RecyclerView.Ada
     }
 
     override fun onBindViewHolder(holder: StandingViewHolder, position: Int) {
-        holder.bind(standings[position])
+        val standing = standings[position]
+        holder.bind(standing, position)
     }
 
     override fun getItemCount(): Int = standings.size
@@ -32,12 +34,22 @@ class StandingsAdapter(private var standings: List<Standing>) : RecyclerView.Ada
         private val tvDraws: TextView = itemView.findViewById(R.id.tvDraws)
         private val tvLosses: TextView = itemView.findViewById(R.id.tvLosses)
 
-        fun bind(standing: Standing) {
+        fun bind(standing: Standing, position: Int) {
             tvTeam.text = standing.team.name
             tvPoints.text = "Pontos: ${standing.points}"
             tvWins.text = "Vitórias: ${standing.wins}"
             tvDraws.text = "Empates: ${standing.draws}"
             tvLosses.text = "Derrotas: ${standing.losses}"
+
+            // Destacar o líder com uma cor diferente
+            val context = itemView.context
+            val backgroundColor = when (position) {
+                0 -> ContextCompat.getColor(context, R.color.gold) // 🥇 Primeiro lugar
+                1 -> ContextCompat.getColor(context, R.color.silver) // 🥈 Segundo lugar
+                2 -> ContextCompat.getColor(context, R.color.bronze) // 🥉 Terceiro lugar
+                else -> ContextCompat.getColor(context, R.color.background) // Normal
+            }
+            itemView.setBackgroundColor(backgroundColor)
         }
     }
 }
