@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#007f00</color> <!-- Verde vibrante -->
-    <color name="primary_dark">#005700</color> <!-- Verde escuro -->
-    <color name="accent">#FFD700</color> <!-- Dourado para destaques -->
+    <color name="primary">#007f00</color>
+    <color name="primary_dark">#005700</color>
+    <color name="accent">#FFD700</color>
 
-    <color name="gray_light">#EEEEEE</color> <!-- Fundo dos EditTexts -->
+    <color name="gray_light">#EEEEEE</color>
     <color name="black">#000000</color>
-    <color name="gold">#FFD700</color> <!-- Ouro -->
-    <color name="silver">#C0C0C0</color> <!-- Prata -->
-    <color name="bronze">#CD7F32</color> <!-- Bronze -->
+    <color name="gold">#FFD700</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="bronze">#CD7F32</color>
+    <color name="secondary">#FF5722</color>
 
 
-    <color name="green_primary">#007f00</color> <!-- Mesma cor que primary -->
-    <color name="green_dark">#005700</color> <!-- Mesma cor que primary_dark -->
-    <color name="gray_dark">#424242</color> <!-- Cinza escuro -->
-    <color name="dark_gray">#424242</color>
-    <color name="text_primary">#212121</color> <!-- Preto para melhor contraste -->
-    <color name="text_secondary">#757575</color> <!-- Cinza para dicas -->
-    <color name="background">#88000000</color> <!-- Fundo semi-transparente -->
+    <color name="green_primary">#007f00</color>
+    <color name="green_dark">#005700</color>
+    <color name="gray_dark">#424242</color>
+    <color name="dark_gray">#616161</color>
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="background">#88000000</color>
     <color name="white">#FFFFFF</color>
-    <color name="green">#008000</color> <!-- Verde escuro -->
-    <color name="button_disabled">#555555</color> <!-- Cinza escuro -->
+    <color name="green">#008000</color>
+    <color name="button_disabled">#555555</color>
 </resources>

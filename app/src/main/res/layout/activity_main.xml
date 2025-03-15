@@ -2,24 +2,24 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Fundo com grama -->
+    
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/grama_fundo"
         android:scaleType="centerCrop"/>
 
-    <!-- Efeito de escurecimento do fundo -->
+    
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background"
-        android:alpha="0.3"/>
+        android:background="#66000000"/> 
 
-    <!-- Conteúdo principal -->
+    
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -49,8 +49,12 @@
             android:layout_height="wrap_content"
             android:hint="Jogadores (ex: João**, Maria****, Carlos)"
             android:inputType="text"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"/>
+            android:textColor="@color/black"
+            android:textColorHint="@color/dark_gray"
+            android:background="@drawable/edittext_background"
+            android:minHeight="56dp"
+            android:padding="12dp"
+            android:textSize="16sp"/>
 
         <EditText
             android:id="@+id/etTeamCount"
@@ -58,8 +62,12 @@
             android:layout_height="wrap_content"
             android:hint="Quantidade de times"
             android:inputType="number"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"/>
+            android:textColor="@color/black"
+            android:textColorHint="@color/dark_gray"
+            android:background="@drawable/edittext_background"
+            android:minHeight="56dp"
+            android:padding="12dp"
+            android:textSize="16sp"/>
 
         <EditText
             android:id="@+id/etPlayersPerTeam"
@@ -67,25 +75,44 @@
             android:layout_height="wrap_content"
             android:hint="Jogadores por time"
             android:inputType="number"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"/>
+            android:textColor="@color/black"
+            android:textColorHint="@color/dark_gray"
+            android:background="@drawable/edittext_background"
+            android:minHeight="56dp"
+            android:padding="12dp"
+            android:textSize="16sp"/>
 
-        <Spinner
-            android:id="@+id/spTournamentType"
+        
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/tournament_types"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp"
+            android:hint="Tipo de Torneio"
+            app:boxBackgroundMode="filled"
+            app:boxStrokeColor="@color/primary"
+            app:hintTextColor="@color/secondary">
 
-        <Button
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/spTournamentType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textColorHint="@color/dark_gray"
+                android:padding="15dp"
+                android:textSize="16sp"
+                android:hint=""/> 
+        </com.google.android.material.textfield.TextInputLayout>
+
+       
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnGenerateTeams"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Gerar Times ⚽"
-            android:background="@drawable/button_background"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:padding="12dp"/>
+            android:textColor="?attr/colorOnPrimary"
+            app:cornerRadius="12dp"
+            android:layout_marginTop="8dp"/>
 
         <ScrollView
             android:layout_width="match_parent"
@@ -101,17 +128,17 @@
                 android:textColor="@android:color/white"/>
         </ScrollView>
 
-        <Button
+        
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnStartChampionship"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Iniciar Campeonato 🏆"
-            android:background="@drawable/button_background"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:padding="12dp"
-            android:enabled="false"/>
-
+            android:textColor="?attr/colorOnPrimary"
+            app:cornerRadius="12dp"
+            android:enabled="false"
+            android:layout_marginTop="8dp"/>
     </LinearLayout>
 
 </FrameLayout>

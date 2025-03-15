@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Imagem de fundo -->
+    
     <ImageView
         android:id="@+id/bg_splash"
         android:layout_width="match_parent"
@@ -11,7 +11,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/splash_image" />
 
-    <!-- Logo do aplicativo -->
+   
     <ImageView
         android:id="@+id/logo"
         android:layout_width="200dp"

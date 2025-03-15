@@ -1,64 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout 
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp"
-    android:layout_margin="4dp"
-    android:background="@android:color/white">
-	
-	
+    app:cardCornerRadius="12dp"
+    app:cardElevation="6dp"
+    app:strokeColor="@color/primary"
+    app:strokeWidth="1dp"
+    android:layout_margin="4dp">
 
-   
-    <TextView
-        android:id="@+id/tvMatchTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Jogo"
-        android:textStyle="bold" />
-
-    
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp">
+        android:padding="8dp"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvTeam1"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:id="@+id/tvMatchTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Time 1" />
+            android:text="Jogo"
+            android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/etScore1"
-            android:layout_width="60dp"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="0" />
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/tvTeam1"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Time 1" />
+
+            <EditText
+                android:id="@+id/etScore1"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="0" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/tvTeam2"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Time 2" />
+
+            <EditText
+                android:id="@+id/etScore2"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="0" />
+        </LinearLayout>
     </LinearLayout>
 
-   
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp">
-
-        <TextView
-            android:id="@+id/tvTeam2"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Time 2" />
-
-        <EditText
-            android:id="@+id/etScore2"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="0" />
-    </LinearLayout>
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>
