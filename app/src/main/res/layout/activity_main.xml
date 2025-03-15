@@ -1,89 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="@drawable/grama_fundo"
-    android:gravity="center">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Futebol de Várzea"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/white"/>
-
-    <EditText
-        android:id="@+id/etPlayers"
+    <!-- Fundo com grama -->
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Jogadores (ex: João, Maria...)"
-        android:inputType="text"
-        android:textColor="@android:color/white"
-        android:textColorHint="@android:color/white"/>
+        android:layout_height="match_parent"
+        android:src="@drawable/grama_fundo"
+        android:scaleType="centerCrop"/>
 
-    <EditText
-        android:id="@+id/etTeamCount"
+    <!-- Efeito de escurecimento do fundo -->
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Quantidade de times"
-        android:inputType="number"
-        android:textColor="@android:color/white"
-        android:textColorHint="@android:color/white"/>
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:alpha="0.3"/>
 
-    <EditText
-        android:id="@+id/etPlayersPerTeam"
+    <!-- Conteúdo principal -->
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Jogadores por time"
-        android:inputType="number"
-        android:textColor="@android:color/white"
-        android:textColorHint="@android:color/white"/>
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:gravity="center">
 
-    <Spinner
-        android:id="@+id/spTournamentType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/tournament_types"
-        android:layout_marginTop="8dp"/>
-
-    <Button
-        android:id="@+id/btnGenerateTeams"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Gerar Times ⚽"
-        android:background="@drawable/button_background"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        android:padding="12dp"/>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="16dp">
-
-        <TextView
-            android:id="@+id/tvGeneratedTeams"
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            ads:adSize="BANNER"
+            ads:adUnitId="ca-app-pub-3514710901675434/3650496625"
+            android:layout_gravity="bottom"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Futebol de Várzea"
+            android:textSize="24sp"
+            android:textStyle="bold"
             android:textColor="@android:color/white"/>
-    </ScrollView>
 
-    <Button
-        android:id="@+id/btnStartChampionship"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Iniciar Campeonato 🏆"
-        android:background="@drawable/button_background"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        android:padding="12dp"
-        android:enabled="false"/>
+        <EditText
+            android:id="@+id/etPlayers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Jogadores (ex: João**, Maria****, Carlos)"
+            android:inputType="text"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"/>
 
+        <EditText
+            android:id="@+id/etTeamCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Quantidade de times"
+            android:inputType="number"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"/>
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/etPlayersPerTeam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Jogadores por time"
+            android:inputType="number"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"/>
+
+        <Spinner
+            android:id="@+id/spTournamentType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/tournament_types"
+            android:layout_marginTop="8dp"/>
+
+        <Button
+            android:id="@+id/btnGenerateTeams"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gerar Times ⚽"
+            android:background="@drawable/button_background"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:padding="12dp"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/tvGeneratedTeams"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@android:color/white"/>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/btnStartChampionship"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Iniciar Campeonato 🏆"
+            android:background="@drawable/button_background"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:padding="12dp"
+            android:enabled="false"/>
+
+    </LinearLayout>
+
+</FrameLayout>
