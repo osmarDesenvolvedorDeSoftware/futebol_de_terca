@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 
 class MainActivity : AppCompatActivity() {
@@ -50,12 +51,12 @@ class MainActivity : AppCompatActivity() {
         val teamCount = etTeamCount.text.toString().toIntOrNull() ?: 0
 
         if (playersInput.isEmpty() || teamCount == 0) {
-            showToast("Preencha os campos corretamente!")
+            Snackbar.make(btnGenerateTeams, "Preencha os campos corretamente!", Snackbar.LENGTH_LONG).show()
             return
         }
 
         if (players.size < teamCount * 2) {
-            showToast("Faltam jogadores para formar os times!")
+            Snackbar.make(btnGenerateTeams, "Faltam jogadores para formar os times!", Snackbar.LENGTH_LONG).show()
             return
         }
 
@@ -64,7 +65,13 @@ class MainActivity : AppCompatActivity() {
             "${team.name}: ${team.players.joinToString(", ") { "${it.name} (${it.rating}★)" }}"
         }
         btnStartChampionship.isEnabled = true
-        showToast("Times equilibrados gerados!")
+
+
+        Snackbar.make(btnGenerateTeams, "Times gerados!", Snackbar.LENGTH_LONG)
+            .setAction("") {
+                generateTeams()
+            }
+            .show()
     }
 
     private fun startTournament() {
