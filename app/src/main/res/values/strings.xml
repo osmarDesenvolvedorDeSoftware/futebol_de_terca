@@ -1,3 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">futebol_de_terca</string>
+
+    <!-- Nome do App -->
+    <string name="app_name">Futebol de Várzea</string>
+
+    <!-- Placeholders dos EditTexts -->
+    <string name="hint_players">Jogadores (ex: João, Maria, Carlos)</string>
+    <string name="hint_team_count">Quantidade de times</string>
+    <string name="hint_players_per_team">Jogadores por time</string>
+
+    <!-- Tipo de Torneio -->
+    <string name="label_tournament_type">Tipo de Torneio</string>
+
+    <!-- Botões -->
+    <string name="btn_generate_teams">Gerar Times ⚽</string>
+    <string name="btn_start_championship">Iniciar Campeonato 🏆</string>
+
+    <!-- Mensagens de erro -->
+    <string name="error_fill_scores">Preencha os placares corretamente!</string>
+    <string name="toast_score_saved">Placar salvo!</string>
+
+    <!-- Resultados e Classificação -->
+    <string name="label_points">Pontos:</string>
+    <string name="label_wins">Vitórias:</string>
+    <string name="label_draws">Empates:</string>
+    <string name="label_losses">Derrotas:</string>
+
+    <!-- Títulos e Labels -->
+    <string name="title_classification">Classificação</string>
+    <string name="title_match">Jogo</string>
+
 </resources>

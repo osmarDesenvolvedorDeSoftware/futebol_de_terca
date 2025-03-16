@@ -26,7 +26,7 @@ class LeagueActivity : AppCompatActivity() {
         recyclerViewMatches = findViewById(R.id.recyclerViewMatches)
         recyclerViewStandings = findViewById(R.id.recyclerViewStandings)
 
-        // Recupera times
+
         teams = (intent.getSerializableExtra("teams") as? ArrayList<Team>)?.toList() ?: emptyList()
 
         if (teams.isEmpty()) {

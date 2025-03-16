@@ -2,6 +2,7 @@ package com.osmardev.futebolterca
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Html
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
@@ -31,11 +32,9 @@ class MainActivity : AppCompatActivity() {
         spTournamentType = findViewById(R.id.spTournamentType)
         tvGeneratedTeams = findViewById(R.id.tvGeneratedTeams)
 
-
         val tournamentTypes = resources.getStringArray(R.array.tournament_types)
         val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, tournamentTypes)
         spTournamentType.setAdapter(adapter)
-
 
         spTournamentType.setOnClickListener {
             spTournamentType.showDropDown()
@@ -61,17 +60,30 @@ class MainActivity : AppCompatActivity() {
         }
 
         generatedTeams = generateBalancedTeams(players, teamCount)
-        tvGeneratedTeams.text = generatedTeams.joinToString("\n\n") { team ->
-            "${team.name}: ${team.players.joinToString(", ") { "${it.name} (${it.rating}★)" }}"
-        }
+        displayGeneratedTeams()
         btnStartChampionship.isEnabled = true
 
-
         Snackbar.make(btnGenerateTeams, "Times gerados!", Snackbar.LENGTH_LONG)
-            .setAction("") {
+            .setAction("Refazer") {
                 generateTeams()
             }
             .show()
+    }
+
+    private fun displayGeneratedTeams() {
+        val formattedTeams = StringBuilder()
+
+        generatedTeams.forEach { team ->
+            formattedTeams.append("<b>⚽ ${team.name}</b><br>")
+
+            team.players.forEach { player ->
+                formattedTeams.append("➜ ${player.name} (${player.rating}★)<br>")
+            }
+
+            formattedTeams.append("<br>")
+        }
+
+        tvGeneratedTeams.text = Html.fromHtml(formattedTeams.toString(), Html.FROM_HTML_MODE_LEGACY)
     }
 
     private fun startTournament() {
@@ -103,17 +115,31 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun generateBalancedTeams(players: List<Player>, teamCount: Int): List<Team> {
-        val sortedPlayers = players.sortedByDescending { it.rating }
+        val shuffledPlayers = players.shuffled()
         val teams = MutableList(teamCount) { mutableListOf<Player>() }
-        sortedPlayers.forEachIndexed { index, player ->
+
+        shuffledPlayers.forEachIndexed { index, player ->
             teams[index % teamCount].add(player)
         }
-        return teams.map { Team(generateRandomTeamName(), ArrayList(it)) }
+
+        //
+        val uniqueNames = mutableSetOf<String>()
+        val generatedTeams = teams.map {
+            var teamName: String
+            do {
+                teamName = generateRandomTeamName()
+            } while (uniqueNames.contains(teamName))
+            uniqueNames.add(teamName)
+            Team(teamName, ArrayList(it))
+        }
+
+        return generatedTeams
     }
 
     private fun generateRandomTeamName(): String {
         val part1 = listOf("Tropa", "Bonde", "Galera", "Baba", "Racha", "Pelada", "Resenha", "Bar", "Os", "Só")
         val part2 = listOf("Pipoca", "Churrasco", "Pó de Arroz", "Fominha", "Perna de Pau", "Cervejeiros", "Boleiros")
+
         return "${part1.random()} ${part2.random()}"
     }
 
