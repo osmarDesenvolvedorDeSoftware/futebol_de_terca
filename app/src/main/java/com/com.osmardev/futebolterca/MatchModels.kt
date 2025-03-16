@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Player(
     val name: String,
-    val rating: Int // De 1 a 5 estrelas
+    val rating: Int
 ) : Parcelable
 
 
