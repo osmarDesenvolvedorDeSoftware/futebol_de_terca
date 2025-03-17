@@ -32,8 +32,9 @@ class MainActivity : AppCompatActivity() {
         spTournamentType = findViewById(R.id.spTournamentType)
         tvGeneratedTeams = findViewById(R.id.tvGeneratedTeams)
 
-        val tournamentTypes = resources.getStringArray(R.array.tournament_types)
+        val tournamentTypes = arrayOf("Mata-Mata", "Pontos Corridos")
         val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, tournamentTypes)
+
         spTournamentType.setAdapter(adapter)
 
         spTournamentType.setOnClickListener {
