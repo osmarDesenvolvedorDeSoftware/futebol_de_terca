@@ -43,6 +43,10 @@ class MainActivity : AppCompatActivity() {
         btnGenerateTeams.setOnClickListener { generateTeams() }
         btnStartChampionship.setOnClickListener { startTournament() }
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+    }
 
     private fun generateTeams() {
         val playersInput = etPlayers.text.toString().trim()
@@ -103,6 +107,7 @@ class MainActivity : AppCompatActivity() {
         }
         intent.putExtra("teams", ArrayList(generatedTeams))
         startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
     private fun parsePlayers(input: String): List<Player> {

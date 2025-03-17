@@ -1,5 +1,6 @@
 package com.osmardev.futebolterca
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -53,6 +54,11 @@ class KnockoutActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+    }
+
     private fun startKnockoutTournament(teams: List<Team>) {
         matches = generateKnockoutMatches(teams)
         setupRecyclerView()
@@ -84,14 +90,15 @@ class KnockoutActivity : AppCompatActivity() {
         }
 
         if (winners.size == 1) {
-
             findViewById<TextView>(R.id.txtChampion).text = "Campeão: ${winners.first().name} 🏆"
-
             findViewById<Button>(R.id.btnAdvance).visibility = View.GONE
         } else {
             showStatusMessage("Avançando para a próxima rodada...")
-            matches = generateKnockoutMatches(winners)
-            setupRecyclerView()
+
+            val nextRoundIntent = Intent(this, KnockoutActivity::class.java)
+            nextRoundIntent.putExtra("teams", ArrayList(winners))
+            startActivity(nextRoundIntent)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }
     }
 

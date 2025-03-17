@@ -39,6 +39,10 @@ class LeagueActivity : AppCompatActivity() {
 
         setupRecyclerViews()
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+    }
 
     private fun generateLeagueMatches(teams: List<Team>): List<Match> {
         val matches = mutableListOf<Match>()
