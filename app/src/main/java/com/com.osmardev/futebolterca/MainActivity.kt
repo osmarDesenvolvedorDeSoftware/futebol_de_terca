@@ -3,9 +3,13 @@ package com.osmardev.futebolterca
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Html
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 
@@ -14,8 +18,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnGenerateTeams: Button
     private lateinit var btnStartChampionship: Button
     private lateinit var btnAddPlayer: Button
-    private lateinit var btnRemovePlayer: Button
-    private lateinit var etPlayers: EditText
+    private lateinit var recyclerViewPlayers: RecyclerView
+    private lateinit var playerAdapter: PlayerAdapter
     private lateinit var etTeamCount: EditText
     private lateinit var etPlayersPerTeam: EditText
     private lateinit var spTournamentType: MaterialAutoCompleteTextView
@@ -32,19 +36,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        recyclerViewPlayers = findViewById(R.id.recyclerViewPlayers)
         btnGenerateTeams = findViewById(R.id.btnGenerateTeams)
         btnStartChampionship = findViewById(R.id.btnStartChampionship)
         btnAddPlayer = findViewById(R.id.btnAddPlayer)
-        btnRemovePlayer = findViewById(R.id.btnRemovePlayer)
-        etPlayers = findViewById(R.id.etPlayers)
         etTeamCount = findViewById(R.id.etTeamCount)
         etPlayersPerTeam = findViewById(R.id.etPlayersPerTeam)
         spTournamentType = findViewById(R.id.spTournamentType)
         tvGeneratedTeams = findViewById(R.id.tvGeneratedTeams)
-
-        etPlayers.isFocusable = false
-        etPlayers.isFocusableInTouchMode = false
-        etPlayers.isClickable = false
 
         val tournamentTypes = arrayOf("Mata-Mata", "Pontos Corridos")
         val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, tournamentTypes)
@@ -52,10 +51,23 @@ class MainActivity : AppCompatActivity() {
 
         spTournamentType.setOnClickListener { spTournamentType.showDropDown() }
 
-        btnGenerateTeams.setOnClickListener { generateTeams() }
+        playerAdapter = PlayerAdapter(playersList) { player ->
+            removePlayer(player)
+        }
+        recyclerViewPlayers.layoutManager = LinearLayoutManager(this)
+        recyclerViewPlayers.adapter = playerAdapter
+
+        btnGenerateTeams.setOnClickListener {
+            btnGenerateTeams.isEnabled = false
+            btnGenerateTeams.text = "Gerando Times..."
+            Handler(Looper.getMainLooper()).postDelayed({
+                generateTeams()
+                btnGenerateTeams.isEnabled = true
+                btnGenerateTeams.text = "Gerar Times ⚽"
+            }, 1000)
+        }
         btnStartChampionship.setOnClickListener { startTournament() }
         btnAddPlayer.setOnClickListener { openAddPlayerScreen() }
-        btnRemovePlayer.setOnClickListener { removeLastPlayer() }
     }
 
     private fun openAddPlayerScreen() {
@@ -70,22 +82,19 @@ class MainActivity : AppCompatActivity() {
             newPlayer?.let {
                 playersList.add(it)
                 updatePlayersUI()
+                Snackbar.make(recyclerViewPlayers, "${it.name} foi adicionado! ✅", Snackbar.LENGTH_SHORT).show()
             }
         }
     }
 
     private fun updatePlayersUI() {
-        val playersText = playersList.joinToString("\n") { "⚽ ${it.name} - ${it.rating}★" }
-        etPlayers.setText(playersText)
+        playerAdapter.notifyDataSetChanged()
     }
 
-    private fun removeLastPlayer() {
-        if (playersList.isNotEmpty()) {
-            playersList.removeAt(playersList.size - 1)
-            updatePlayersUI()
-        } else {
-            showToast("Nenhum jogador para remover!")
-        }
+    private fun removePlayer(player: Player) {
+        playersList.remove(player)
+        updatePlayersUI()
+        showToast("${player.name} foi removido!")
     }
 
     private fun generateTeams() {
@@ -144,10 +153,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun generateBalancedTeams(players: List<Player>, teamCount: Int): List<Team> {
-        val shuffledPlayers = players.shuffled()
+        val sortedPlayers = players.sortedByDescending { it.rating }
         val teams = MutableList(teamCount) { mutableListOf<Player>() }
 
-        shuffledPlayers.forEachIndexed { index, player ->
+        sortedPlayers.forEachIndexed { index, player ->
             teams[index % teamCount].add(player)
         }
 

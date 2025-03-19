@@ -44,19 +44,16 @@
             android:textColor="@android:color/white"
             android:gravity="center"/>
 
-        
-        <EditText
-            android:id="@+id/etPlayers"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Jogadores (ex: João, Maria, Carlos)"
-            android:inputType="text"
-            android:textColor="@color/black"
-            android:textColorHint="@color/dark_gray"
-            android:background="@drawable/edittext_background"
-            android:minHeight="56dp"
-            android:padding="12dp"
-            android:textSize="16sp"/>
+       <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recyclerViewPlayers"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:maxHeight="250dp"
+    android:scrollbars="vertical"
+    android:background="@android:color/transparent"/>
+
+
 
         <EditText
             android:id="@+id/etTeamCount"
