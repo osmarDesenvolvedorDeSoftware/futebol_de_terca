@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/etPlayerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nome do jogador"
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/etPlayerRating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nota do jogador (1-5)"
+        android:inputType="number"
+        android:textSize="16sp"/>
+
+    <Button
+        android:id="@+id/btnAddPlayer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adicionar Jogador"
+        android:layout_marginTop="16dp"/>
+</LinearLayout>

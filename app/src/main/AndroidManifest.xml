@@ -17,7 +17,7 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-3514710901675434~1843425089"/>
 
-        <!-- SplashActivity deve ser a única com MAIN e LAUNCHER -->
+
         <activity
             android:name=".SplashActivity"
             android:exported="true"
@@ -28,14 +28,15 @@
             </intent-filter>
         </activity>
 
-        <!-- MainActivity -->
+
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.Futebol_de_terca"/>
 
-        <!-- Outras atividades -->
+
         <activity android:name=".LeagueActivity" />
         <activity android:name=".KnockoutActivity" />
+        <activity android:name=".AddPlayerActivity" />
 
     </application>
 </manifest>

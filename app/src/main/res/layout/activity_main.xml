@@ -105,6 +105,21 @@
         android:focusable="false" 
         android:cursorVisible="false" />
 </com.google.android.material.textfield.TextInputLayout>
+<Button
+    android:id="@+id/btnAddPlayer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Adicionar Jogador"
+    android:layout_marginTop="8dp"/>
+<Button
+    android:id="@+id/btnRemovePlayer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Remover Último Jogador"
+    android:layout_marginTop="8dp"
+    android:backgroundTint="@color/primary"
+    android:textColor="@android:color/white"/>
+
 
         
         <com.google.android.material.button.MaterialButton
