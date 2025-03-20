@@ -1,0 +1,59 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    android:background="@drawable/background_champion">
+
+    
+    <ImageView
+        android:id="@+id/imgConfetti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_confetti"
+        android:visibility="gone"/>
+
+   
+    <TextView
+        android:id="@+id/tvChampionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🏆 CAMPEÃO 🏆"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:layout_marginBottom="12dp"/>
+
+  
+    <TextView
+        android:id="@+id/tvChampionName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/gold"
+        android:gravity="center"
+        android:layout_marginBottom="8dp"/>
+
+   
+    <ImageView
+        android:id="@+id/imgTrophy"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/ic_trophy"
+        android:layout_marginBottom="16dp"/>
+
+   
+    <TextView
+        android:id="@+id/tvChampionMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:layout_marginTop="8dp"/>
+</LinearLayout>

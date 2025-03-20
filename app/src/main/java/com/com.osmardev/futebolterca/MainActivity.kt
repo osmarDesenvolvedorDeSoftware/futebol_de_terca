@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.text.Html
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var etPlayersPerTeam: EditText
     private lateinit var spTournamentType: MaterialAutoCompleteTextView
     private lateinit var tvGeneratedTeams: TextView
+    private lateinit var tvReservas: TextView
 
     private val playersList = mutableListOf<Player>()
     private var generatedTeams: List<Team> = emptyList()
@@ -40,10 +42,11 @@ class MainActivity : AppCompatActivity() {
         btnGenerateTeams = findViewById(R.id.btnGenerateTeams)
         btnStartChampionship = findViewById(R.id.btnStartChampionship)
         btnAddPlayer = findViewById(R.id.btnAddPlayer)
-        etTeamCount = findViewById(R.id.etTeamCount)
         etPlayersPerTeam = findViewById(R.id.etPlayersPerTeam)
         spTournamentType = findViewById(R.id.spTournamentType)
         tvGeneratedTeams = findViewById(R.id.tvGeneratedTeams)
+        tvReservas = findViewById(R.id.tvReservas)
+
 
         val tournamentTypes = arrayOf("Mata-Mata", "Pontos Corridos")
         val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, tournamentTypes)
@@ -98,26 +101,39 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun generateTeams() {
-        val players = playersList
-        val teamCount = etTeamCount.text.toString().toIntOrNull() ?: 0
+        val playersPerTeam = etPlayersPerTeam.text.toString().toIntOrNull() ?: 0
+        val totalPlayers = playersList.size
 
-        if (players.isEmpty() || teamCount == 0) {
-            Snackbar.make(btnGenerateTeams, "Preencha os campos corretamente!", Snackbar.LENGTH_LONG).show()
+        if (playersPerTeam == 0 || totalPlayers < playersPerTeam) {
+            Snackbar.make(btnGenerateTeams, "Número de jogadores por time inválido!", Snackbar.LENGTH_LONG).show()
             return
         }
 
-        if (players.size < teamCount * 2) {
-            Snackbar.make(btnGenerateTeams, "Faltam jogadores para formar os times!", Snackbar.LENGTH_LONG).show()
+        val teamCount = totalPlayers / playersPerTeam
+        val reservas = totalPlayers % playersPerTeam
+
+        if (teamCount == 0) {
+            Snackbar.make(btnGenerateTeams, "Jogadores insuficientes para formar um time!", Snackbar.LENGTH_LONG).show()
             return
         }
 
-        generatedTeams = generateBalancedTeams(players, teamCount)
-        displayGeneratedTeams()
+
+        val allTeams = generateBalancedTeams(playersList, teamCount)
+
+
+        val reservaList = mutableListOf<Player>()
+        if (reservas > 0) {
+            reservaList.addAll(playersList.takeLast(reservas))
+        }
+
+        generatedTeams = allTeams
+        displayGeneratedTeams(reservaList)
         btnStartChampionship.isEnabled = true
     }
 
-    private fun displayGeneratedTeams() {
+    private fun displayGeneratedTeams(reservas: List<Player>) {
         val formattedTeams = StringBuilder()
+
         generatedTeams.forEach { team ->
             formattedTeams.append("<b>⚽ ${team.name}</b><br>")
             team.players.forEach { player ->
@@ -125,8 +141,21 @@ class MainActivity : AppCompatActivity() {
             }
             formattedTeams.append("<br>")
         }
+
+        if (reservas.isNotEmpty()) {
+            formattedTeams.append("<b>🔄 Reservas</b><br>")
+            reservas.forEach { player ->
+                formattedTeams.append("➜ ${player.name} (${player.rating}★)<br>")
+            }
+            tvReservas.visibility = View.VISIBLE
+        } else {
+            tvReservas.visibility = View.GONE
+        }
+
         tvGeneratedTeams.text = Html.fromHtml(formattedTeams.toString(), Html.FROM_HTML_MODE_LEGACY)
     }
+
+
 
     private fun startTournament() {
         if (generatedTeams.isEmpty()) {

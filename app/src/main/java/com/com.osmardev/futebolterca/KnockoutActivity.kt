@@ -90,8 +90,11 @@ class KnockoutActivity : AppCompatActivity() {
         }
 
         if (winners.size == 1) {
-            findViewById<TextView>(R.id.txtChampion).text = "Campeão: ${winners.first().name} 🏆"
-            findViewById<Button>(R.id.btnAdvance).visibility = View.GONE
+            val championIntent = Intent(this, ChampionActivity::class.java)
+            championIntent.putExtra("championName", winners.first().name)
+            startActivity(championIntent)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            finish()
         } else {
             showStatusMessage("Avançando para a próxima rodada...")
 

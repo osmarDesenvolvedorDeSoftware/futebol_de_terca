@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-   
+    
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,7 +16,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#66000000"/> 
+        android:background="#66000000"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -25,7 +25,7 @@
         android:padding="16dp"
         android:gravity="center">
 
-        
+       
         <com.google.android.gms.ads.AdView
             android:id="@+id/adView"
             android:layout_width="match_parent"
@@ -42,32 +42,42 @@
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@android:color/white"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:layout_marginBottom="8dp"/>
 
-       <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/recyclerViewPlayers"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"
-    android:maxHeight="250dp"
-    android:scrollbars="vertical"
-    android:background="@android:color/transparent"/>
+       
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewPlayers"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scrollbars="vertical"
+            android:background="@android:color/transparent"/>
 
-
-
-        <EditText
-            android:id="@+id/etTeamCount"
+        
+        <TextView
+            android:id="@+id/tvReservas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Quantidade de times"
-            android:inputType="number"
-            android:textColor="@color/black"
-            android:textColorHint="@color/dark_gray"
-            android:background="@drawable/edittext_background"
-            android:minHeight="56dp"
-            android:padding="12dp"
-            android:textSize="16sp"/>
+            android:text="Reservas:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:paddingTop="8dp"/>
 
+       
+        <TextView
+            android:id="@+id/tvListaReservas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:visibility="gone"
+            android:padding="4dp"/>
+
+        
         <EditText
             android:id="@+id/etPlayersPerTeam"
             android:layout_width="match_parent"
@@ -79,46 +89,40 @@
             android:background="@drawable/edittext_background"
             android:minHeight="56dp"
             android:padding="12dp"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"/>
 
         
         <com.google.android.material.textfield.TextInputLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="Tipo de Torneio"
-    app:boxBackgroundMode="filled"
-    app:boxStrokeColor="@color/primary"
-    app:hintTextColor="@color/secondary">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tipo de Torneio"
+            app:boxBackgroundMode="filled"
+            app:boxStrokeColor="@color/primary"
+            app:hintTextColor="@color/secondary">
 
-    <com.google.android.material.textfield.MaterialAutoCompleteTextView
-        android:id="@+id/spTournamentType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textColorHint="@color/dark_gray"
-        android:padding="15dp"
-        android:textSize="16sp"
-        android:inputType="none"
-        android:focusable="false" 
-        android:cursorVisible="false" />
-</com.google.android.material.textfield.TextInputLayout>
-<Button
-    android:id="@+id/btnAddPlayer"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Adicionar Jogador"
-    android:layout_marginTop="8dp"/>
-<Button
-    android:id="@+id/btnRemovePlayer"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Remover Último Jogador"
-    android:layout_marginTop="8dp"
-    android:backgroundTint="@color/primary"
-    android:textColor="@android:color/white"/>
-
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/spTournamentType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textColorHint="@color/dark_gray"
+                android:padding="15dp"
+                android:textSize="16sp"
+                android:inputType="none"
+                android:focusable="false"
+                android:cursorVisible="false"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         
+        <Button
+            android:id="@+id/btnAddPlayer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Adicionar Jogador"
+            android:layout_marginTop="8dp"/>
+
+       
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnGenerateTeams"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -130,7 +134,7 @@
             android:backgroundTint="@color/primary"
             android:layout_marginTop="8dp"/>
 
-        
+       
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -158,6 +162,7 @@
             android:backgroundTint="@color/primary"
             android:enabled="false"
             android:layout_marginTop="8dp"/>
+			
     </LinearLayout>
 
 </FrameLayout>
