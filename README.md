@@ -4,6 +4,10 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/osmarDesenvolvedorDeSoftware/futebol_de_terca)
 ![GitHub stars](https://img.shields.io/github/stars/osmarDesenvolvedorDeSoftware/futebol_de_terca?style=social)
 
+📲 **Baixe agora na Google Play Store:**
+
+[![Disponível no Google Play](https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg)](https://play.google.com/store/apps/details?id=com.osmardev.futebolterca)
+
 ## 📌 Descrição
 O **Futebol de Terça** é um aplicativo Android desenvolvido em **Kotlin** que permite a organização de campeonatos de futebol, suportando torneios no formato **Mata-Mata** e **Pontos Corridos**.  
 Com ele, você pode cadastrar times, registrar resultados e acompanhar a classificação de maneira simples e intuitiva.
